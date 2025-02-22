@@ -1,4 +1,4 @@
-# CMSI 3801: Languages & Automata II
+# CMSI 3802: Languages & Automata II
 
 ## Assignments
 
