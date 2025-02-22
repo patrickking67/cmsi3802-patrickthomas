@@ -243,10 +243,18 @@ const grammars = {
   `,
 }
 
+//------------------------------------------------------------------------------
+
 function matches(name, string) {
-  const grammar = `G {${grammars[name]}}`
-  return ohm.grammar(grammar).match(string).succeeded()
+  // Wrap the snippet in 'G { ... }', parse with ohm.
+  const grammarSource = `G {
+${grammars[name]}
+}`
+  const g = ohm.grammar(grammarSource)
+  return g.match(string).succeeded()
 }
+
+// Tests
 
 const testFixture = {
   canadianPostalCode: {
@@ -312,7 +320,7 @@ const testFixture = {
   eightThroughThirtyTwo: {
     good: Array(25)
       .fill(0)
-      .map((x, i) => i + 8),
+      .map((x, i) => (i + 8).toString()), // strings "8","9","10","11",...
     bad: ["1", "0", "00003", "dog", "", "361", "90", "7", "-11"],
   },
   notPythonPycharmPyc: {
@@ -385,15 +393,16 @@ const testFixture = {
   },
 }
 
+
 for (let name of Object.keys(testFixture)) {
   describe(`when matching ${name}`, () => {
     for (let s of testFixture[name].good) {
-      it(`accepts ${s}`, () => {
+      it(`accepts ${JSON.stringify(s)}`, () => {
         assert.ok(matches(name, s))
       })
     }
     for (let s of testFixture[name].bad) {
-      it(`rejects ${s}`, () => {
+      it(`rejects ${JSON.stringify(s)}`, () => {
         assert.ok(!matches(name, s))
       })
     }
