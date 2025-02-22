@@ -76,3 +76,4 @@ Question2Language {
 
   space
     := " " | "\t" | "\n" | "\r"
+}
