@@ -6,7 +6,7 @@
 - [**Homework 2**](Homework2)
     - [Question 1 (Parts A - J)](Homework2/Question1.js)
     - [Question 2](Homework2/Question2.txt)
-    - [Question 3](Homework2/Question3.js)
+    - [Question 3](Homework2/Question3.ohm)
 - [**Homework 3**](Homework3)
 - [**Homework 4**](Homework4)
 - [**Homework 5**](Homework5)
