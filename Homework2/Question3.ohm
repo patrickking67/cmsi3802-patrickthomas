@@ -1,8 +1,3 @@
-import * as ohm from "ohm-js"
-// --------------------------
-// 1. Define the grammar source as a string
-// --------------------------
-const grammarSource = `
 Question2Language {
   Program
     = Decl* Expression
@@ -81,19 +76,3 @@ Question2Language {
 
   space
     := " " | "\t" | "\n" | "\r"
-}
-
-  
-`;
-
-// --------------------------
-// 2. Create the grammar
-// --------------------------
-let myGrammar;
-try {
-  myGrammar = ohm.grammar(grammarSource);
-  console.log("Grammar loaded successfully!");
-} catch (e) {
-  console.error("Failed to create grammar:", e.message);
-  process.exit(1);
-}
